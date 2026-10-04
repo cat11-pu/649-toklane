@@ -1,0 +1,37 @@
+# toklane scenario: virtual milliseconds, operation, connection, then key=value
+# args. Times must not go backwards. This file is input data only.
+0 auth c1 alice@TEST.GOKRB5 GRPC/host.test.gokrb5 idle=6000 abs=15000
+100 call c1 alice@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=1 method=/Service/Mirror
+200 call c1 alice@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=2 method=/Service/Reflector
+300 call c1 alice@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=2 method=/Service/Mirror
+400 call c1 alice@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=5 method=/Service/Mirror
+500 call c1 alice@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=3 method=/Service/Mirror
+600 call c1 alice@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=6 method=/Service/Reflector
+1000 auth c2 bob@TEST.GOKRB5 GRPC/host.test.gokrb5 idle=6000 abs=20000
+1002 auth c3 carol@TEST.GOKRB5 GRPC/host.test.gokrb5 idle=6000 abs=20000
+1600 renew c1 alice@TEST.GOKRB5 GRPC/host.test.gokrb5
+1700 call c1 alice@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=6 method=/Service/Mirror
+1800 call c1 alice@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=7 method=/Service/Mirror
+2000 auth c4 dave@TEST.GOKRB5 GRPC/host.test.gokrb5 idle=6000 abs=6000
+3200 call c1 mallory@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=10 method=/Service/Mirror
+3300 call c1 alice@TEST.GOKRB5 GRPC/other.test.gokrb5 seq=10 method=/Service/Mirror
+3400 call c1 alice@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=10 method=/Service/Reflector
+5000 auth c5 erin@TEST.GOKRB5 GRPC/host.test.gokrb5 idle=6000 abs=9000
+6999 call c2 bob@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=1 method=/Service/Mirror
+7002 call c3 carol@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=1 method=/Service/Reflector
+7003 call c3 carol@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=2 method=/Service/Mirror
+7200 call c3 carol@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=3 method=/Service/Mirror
+8000 call c4 dave@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=1 method=/Service/Mirror
+8400 call c4 dave@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=2 method=/Service/Mirror
+9300 call c1 alice@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=11 method=/Service/Mirror
+10000 call c5 erin@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=1 method=/Service/Mirror
+12800 renew c5 erin@TEST.GOKRB5 GRPC/host.test.gokrb5
+13000 call c2 bob@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=2 method=/Service/Reflector
+13100 call c2 bob@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=3 method=/Service/Mirror
+13150 call c2 mallory@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=2 method=/Service/Mirror
+13500 call c5 erin@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=2 method=/Service/Mirror
+14000 call c5 erin@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=3 method=/Service/Mirror
+14050 call c5 erin@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=4 method=/Service/Mirror
+14999 call c1 alice@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=12 method=/Service/Mirror
+15001 call c1 alice@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=13 method=/Service/Mirror
+16000 call c1 alice@TEST.GOKRB5 GRPC/host.test.gokrb5 seq=14 method=/Service/Mirror
